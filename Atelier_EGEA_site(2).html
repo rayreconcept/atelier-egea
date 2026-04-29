@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier EGEA — Aménagements sur mesure</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#1a1a18;--stone:#f4f2ed;--mist:#e8e5de;--warm:#c8b89a;--text:#2a2a26;--muted:#7a7870;--line:rgba(26,26,24,0.1)}
+html{scroll-behavior:smooth}
+body{font-family:'Barlow',sans-serif;background:var(--stone);color:var(--text);font-weight:300;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5rem;background:rgba(244,242,237,0.94);backdrop-filter:blur(10px);border-bottom:0.5px solid var(--line)}
+.nav-logo{font-family:'Barlow',sans-serif;font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink);text-decoration:none;border:0.5px solid var(--ink);padding:.5rem 1.2rem;transition:all .25s}
+.nav-cta:hover{background:var(--ink);color:var(--stone)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem 6rem 6rem;position:relative;z-index:0;background:var(--stone)}
+.hero-eyebrow{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);margin-bottom:2rem;display:flex;align-items:center;gap:.8rem}
+.hero-eyebrow::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--warm)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,5.5vw,5rem);font-weight:300;line-height:1.05;color:var(--ink);margin-bottom:2.2rem}
+.hero-title em{font-style:italic;color:var(--muted)}
+.hero-tagline{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--warm);margin-bottom:.6rem}
+.hero-desc{font-size:15px;line-height:1.85;color:var(--muted);max-width:360px;margin-bottom:3rem}
+.hero-cta{display:inline-flex;align-items:center;gap:.8rem;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s,opacity .2s;align-self:flex-start}
+.hero-cta:hover{gap:1.4rem;opacity:.65}
+.hero-right{position:relative;overflow:hidden;background:var(--mist);margin-left:-60px;z-index:1}
+.hero-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:75% 25%;gap:2px}
+.hero-mosaic div{background-size:cover;background-position:center;background-repeat:no-repeat}
+.hero-mosaic .span2{grid-column:1/3}
+.hero-badge{position:absolute;bottom:2rem;left:2rem;background:transparent;padding:1rem 1.3rem;backdrop-filter:none}
+section{padding:7rem 6rem}
+.label{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);margin-bottom:1rem;display:flex;align-items:center;gap:.8rem}
+.label::before{content:'';display:block;width:1.5rem;height:.5px;background:var(--warm)}
+.approche{background:var(--ink);color:var(--stone);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.approche .label{color:var(--warm)}
+.approche .label::before{background:var(--warm)}
+.approche-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.2;color:var(--stone);margin-bottom:1.8rem}
+.approche-title em{font-style:italic;color:var(--warm)}
+.approche-text{font-size:14px;line-height:1.95;color:rgba(244,242,237,.62);margin-bottom:1.2rem}
+.pillars{display:flex;flex-direction:column;gap:2rem;border-left:.5px solid rgba(244,242,237,.12);padding-left:3rem}
+.pw{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);margin-bottom:.3rem}
+.pd{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--stone);line-height:1.35}
+.realisations{background:var(--stone)}
+.real-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
+.real-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink)}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer}
+.project-card.large{grid-column:span 1}
+.project-img{width:100%;aspect-ratio:1333/1999;object-fit:contain;background:#f0ede6;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
+.project-card.large .project-img{aspect-ratio:1333/1999;object-fit:contain;background:#f0ede6}
+.project-card:hover .project-img{transform:scale(1.05);filter:grayscale(0%)}
+.project-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.5rem 1.2rem;background:linear-gradient(transparent 0%,rgba(16,16,14,.85) 25%,rgba(16,16,14,.97) 100%);transform:translateY(100%);transition:transform .45s cubic-bezier(.25,0,.25,1);overflow:hidden}
+.project-info--rich{transform:translateY(100%)}
+.project-detail{margin-top:1rem;display:flex;flex-direction:column;gap:.7rem;opacity:0;transition:opacity .3s .1s}
+.project-card:hover .project-detail{opacity:1}
+.pd-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:.35rem;font-weight:500}
+.pd-block p{font-size:13px;color:rgba(244,242,237,.82);line-height:1.7;margin:0}
+.project-card:hover .project-info{transform:translateY(0)}
+.project-type{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:.4rem}
+.project-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:.2rem}
+.compagnonnage{background:var(--mist)}
+.compag-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.compag-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:2rem}
+.compag-title em{font-style:italic;color:var(--muted)}
+.compag-para{font-size:14px;line-height:1.95;color:var(--muted);margin-bottom:1.1rem}
+.compag-quote{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ink);border-left:2px solid var(--warm);padding-left:1.5rem;margin-top:2rem;line-height:1.6}
+.demarche{background:var(--stone);display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start}
+.demarche-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.5vw,2.4rem);font-weight:300;color:var(--ink);line-height:1.15;position:sticky;top:110px}
+.demarche-title em{font-style:italic;color:var(--muted)}
+.step{display:grid;grid-template-columns:3rem 1fr;gap:1.8rem;padding:2.2rem 0;border-bottom:.5px solid var(--line)}
+.step:first-child{border-top:.5px solid var(--line)}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--warm);line-height:1}
+.step-name{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);font-weight:500;margin-bottom:.5rem}
+.step-desc{font-size:13px;line-height:1.85;color:var(--muted)}
+.processus{background:var(--ink)}
+.processus .label{color:var(--warm)}
+.processus .label::before{background:var(--warm)}
+.proc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--stone);margin-bottom:2rem}
+.phase-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:2rem}
+.phase-btn{padding:10px 8px;border:.5px solid rgba(244,242,237,.18);background:transparent;cursor:pointer;text-align:center;transition:all .2s;font-family:'Barlow',sans-serif}
+.phase-btn:hover{background:rgba(244,242,237,.05)}
+.phase-btn .pn{font-size:10px;color:rgba(244,242,237,.38);letter-spacing:.12em;display:block;margin-bottom:3px}
+.phase-btn .pl{font-size:12px;font-weight:500;color:rgba(244,242,237,.72);display:block}
+.phase-btn .ps{font-size:10px;color:rgba(244,242,237,.32);display:block;margin-top:2px}
+.phase-btn.active{border-color:var(--warm)}
+.phase-btn.active .pl{color:var(--warm)}
+.phase-content{display:none}
+.phase-content.visible{display:block}
+.sflow{display:flex;flex-direction:column}
+.srow{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:start;padding:11px 0;border-bottom:.5px solid rgba(244,242,237,.07)}
+.srow:last-child{border-bottom:none}
+.srow:first-child{padding-top:0}
+.snum{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;margin-top:2px;background:rgba(200,184,154,.12);color:var(--warm)}
+.stitle{font-size:12px;font-weight:500;color:rgba(244,242,237,.82);margin-bottom:2px}
+.sdesc{font-size:11px;color:rgba(244,242,237,.42);line-height:1.65}
+.snote{display:inline-block;margin-top:5px;font-size:10px;padding:2px 8px;border-radius:2px;font-weight:500;background:rgba(200,184,154,.12);color:var(--warm)}
+.sbranch{margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.branch{padding:8px 10px;border:.5px solid rgba(244,242,237,.12);border-radius:2px}
+.blabel{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;color:var(--warm)}
+.btext{font-size:11px;color:rgba(244,242,237,.38);line-height:1.5}
+.hdark{background:rgba(200,184,154,.07);border-left:2px solid var(--warm);padding:10px 14px;margin-top:8px;font-size:11px;color:rgba(244,242,237,.5);line-height:1.7}
+.hdark strong{color:rgba(244,242,237,.82);font-weight:500}
+.apropos{background:var(--mist);display:grid;grid-template-columns:1fr 1fr;gap:0}
+.apropos-vis{display:flex;align-items:center;justify-content:center;padding:5rem 4rem;background:var(--stone)}
+.apropos-text{padding:7rem 5rem}
+.apropos-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:2rem}
+.apropos-title em{font-style:italic;color:var(--muted)}
+.apropos-para{font-size:14px;line-height:1.95;color:var(--muted);margin-bottom:1.1rem}
+.apropos-sig{margin-top:2.5rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--ink)}
+.contact{background:var(--ink);display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;min-height:58vh}
+.contact .label{color:var(--warm)}
+.contact .label::before{background:var(--warm)}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--stone);line-height:1.1;margin-bottom:1.5rem}
+.contact-title em{font-style:italic;color:var(--warm)}
+.contact-meta{font-size:13px;color:rgba(244,242,237,.5);line-height:1.8}
+.contact-zone{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin-top:1rem}
+.cform{display:flex;flex-direction:column;gap:1.4rem}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.cfield{display:flex;flex-direction:column;gap:.4rem}
+.cfield label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,242,237,.32)}
+.cfield input,.cfield textarea,.cfield select{background:transparent;border:none;border-bottom:.5px solid rgba(244,242,237,.16);color:var(--stone);font-family:'Barlow',sans-serif;font-weight:300;font-size:13px;padding:.5rem 0;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.cfield input:focus,.cfield textarea:focus,.cfield select:focus{border-bottom-color:var(--warm)}
+.cfield select option{background:var(--ink)}
+.cfield textarea{resize:none;height:72px}
+.csubmit{display:inline-flex;align-items:center;gap:.8rem;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);background:transparent;border:.5px solid rgba(244,242,237,.22);padding:.9rem 1.8rem;cursor:pointer;font-family:'Barlow',sans-serif;font-weight:300;transition:all .3s;align-self:flex-start}
+.csubmit:hover{background:var(--warm);border-color:var(--warm);color:var(--ink);gap:1.3rem}
+footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 6rem;display:flex;justify-content:space-between;align-items:center}
+.f-logo{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.f-sub{font-size:11px;color:var(--muted)}
+
+.hero-left>*{animation:fadeUp .8s ease both}
+.hero-eyebrow{animation-delay:.1s}.hero-title{animation-delay:.2s}.hero-tagline{animation-delay:.32s}.hero-desc{animation-delay:.38s}.hero-cta{animation-delay:.44s}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:960px){
+  nav{padding:1rem 2rem}.nav-links{display:none}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{height:80vw;margin-left:0 !important;z-index:1 !important}
+  .hero-left{padding:4rem 2.5rem 3rem;z-index:0 !important;background:var(--stone) !important}
+  .hero-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:65% 35%}
+  .hero-mosaic .span2{grid-column:1/3}
+  .hero-mosaic div:not(.span2){display:flex}
+  section,.compagnonnage,.processus{padding:5rem 2.5rem}
+  .approche,.demarche,.contact,.compag-grid,.apropos{grid-template-columns:1fr;gap:3rem}
+  .apropos-text{padding:3rem 2.5rem}.apropos-vis{padding:3rem 2.5rem}
+  .projects-grid{grid-template-columns:1fr}.project-card.large{grid-column:span 1}
+  .phase-nav{grid-template-columns:repeat(2,1fr)}
+  footer{flex-direction:column;gap:1rem;padding:1.5rem 2.5rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav style="font-family: Barlow">
+  <span class="nav-logo">Atelier EGEA</span>
+  <ul class="nav-links">
+    <li><a href="#approche">Approche</a></li>
+    <li><a href="#realisations">Réalisations</a></li>
+    <li><a href="#histoire">Histoire</a></li>
+    <li><a href="#illustrations">Illustrations</a></li>
+    <li><a href="#processus">Processus</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="/cdn-cgi/l/email-protection#aecfdacbc2c7cbdccbc9cbcfeec9c3cfc7c280cdc1c3" class="nav-cta">Nous écrire</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-left">
+    <span class="hero-eyebrow">Aménagements sur mesure</span>
+    <h1 class="hero-title">Penser<br>l'espace,<br><em>autrement.</em></h1>
+    <p class="hero-tagline">Étudier · Guider · Élaborer · Agencer</p>
+    <p class="hero-desc">Une approche fondée sur l'équilibre entre usages, contraintes et matière, au service de l'espace — personnel ou professionnel.</p>
+    <a href="#realisations" class="hero-cta">Voir les réalisations →</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-mosaic">
+      <div class="span2" style="background-image: url('Design sans titre(7).png'); background-size: contain; background-position: center"></div>
+      <div style="background-color:#e8e5de;display:flex;align-items:flex-end;justify-content:flex-start;padding:1.2rem">
+        <img src="Design sans titre(4).png" alt="Atelier EGEA" style="width:80%;height:auto;mix-blend-mode:multiply">
+      </div>
+      <div style="background-image:url('photos_notion_2_.png')"></div>
+    </div>
+
+</section>
+
+<!-- APPROCHE -->
+<section class="approche" id="approche">
+  <div>
+    <div class="label">Notre approche</div>
+    <h2 class="approche-title">L'espace comme <em>équilibre</em><br>entre usage et matière</h2>
+    <p class="approche-text">Chaque projet naît d'une écoute attentive. Nous analysons vos usages, vos contraintes, vos ambitions — pour concevoir des aménagements qui durent, qui fonctionnent, et qui vous ressemblent.</p>
+    <p class="approche-text">Bois massif, métal, matériaux naturels — nous choisissons les matières avec soin. L'approche est presque architecturale : on pense avant de tracer, on étudie avant de fabriquer.</p>
+  </div>
+  <div class="pillars">
+    <div class="reveal"><div class="pw">Étudier</div><div class="pd">Comprendre l'espace, ses contraintes, ses potentiels</div></div>
+    <div class="reveal"><div class="pw">Guider</div><div class="pd">Accompagner dans les choix, de la conception à la réalisation</div></div>
+    <div class="reveal"><div class="pw">Élaborer</div><div class="pd">Concevoir des solutions sur mesure, précises et cohérentes</div></div>
+    <div class="reveal"><div class="pw">Agencer</div><div class="pd">Réaliser avec soin, en artisan, pour un résultat durable</div></div>
+  </div>
+</section>
+
+<!-- BANNIÈRE -->
+<div style="overflow:hidden;line-height:0;display:none">
+  <img src="photos_notion_5_.png" alt="Du croquis à la réalité — Atelier EGEA" style="width:100%;max-height:460px;object-fit:cover;display:block;filter:grayscale(8%)">
+</div>
+
+<!-- RÉALISATIONS -->
+<section class="realisations" id="realisations">
+  <div class="real-header reveal">
+    <div><div class="label">Projets</div><h2 class="real-title">Réalisations</h2></div>
+    <span style="font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase">Espaces personnels &amp; professionnels</span>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card large reveal">
+      <img class="project-img" src="photos notion(3).png" alt="Mur végétal espace professionnel">
+      <div class="project-info project-info--rich">
+        <div class="project-type">Espace professionnel</div>
+        <div class="project-name">Mur végétal &amp; bardage bois</div>
+        <div class="project-detail">
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Apporter de la matière et du vivant dans un espace intérieur, tout en conservant une ambiance maîtrisée et contemporaine. L'enjeu : intégrer le végétal sans perturber la lecture architecturale.</p></div>
+          <div class="pd-block"><span class="pd-label">L'idée</span><p>Associer un mur végétal à un habillage bois vertical. Créer un contraste entre naturel et structure, en jouant sur les textures et les profondeurs.</p></div>
+          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Mise en place d'un mur végétal intégré dans une structure encadrée. Habillage en tasseaux bois pour rythmer l'ensemble et encadrer les zones végétales.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un mur vivant qui dynamise l'espace et crée une atmosphère apaisante. Une intégration équilibrée entre nature et architecture intérieure.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <img class="project-img" src="photos notion(2).png" alt="Escalier sur mesure bois et bleu nuit">
+      <div class="project-info project-info--rich">
+        <div class="project-type">Espace personnel</div>
+        <div class="project-name">Escalier &amp; rangements intégrés</div>
+        <div class="project-detail">
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Créer un accès à l'étage dans un espace contraint, tout en intégrant du rangement sans alourdir visuellement la pièce.</p></div>
+          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Escalier en bois avec rangements intégrés dans chaque marche. Meuble vertical avec niches ouvertes, jouant sur les pleins et les vides.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un aménagement compact et lisible qui optimise chaque volume. L'ensemble devient un élément structurant, fonctionnel et graphique.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <img class="project-img" src="photos notion(1).png" alt="Aménagement bar restaurant">
+      <div class="project-info project-info--rich">
+        <div class="project-type">Espace commercial</div>
+        <div class="project-name">Aménagement bar &amp; restaurant</div>
+        <div class="project-detail">
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Imaginer un espace bar à forte identité, conjuguant exigence fonctionnelle et qualité d'accueil. Le projet s'inscrit dans une lecture attentive des intentions du client, en respectant ses lignes directrices tout en révélant le potentiel du lieu.</p></div>
+          <div class="pd-block"><span class="pd-label">L'intention</span><p>Construire une expérience sensible à travers le dialogue entre matières et lumière. Le marbre, la mosaïque et les tonalités lumineuses chaudes composent une écriture matérielle raffinée, pensée pour structurer l'espace et en souligner la profondeur.</p></div>
+          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Orchestration rigoureuse des savoir-faire : marbrerie, plomberie, carrelage intégrés dans une logique d'ensemble. Le comptoir, traité comme une pièce architecturale — habillage mosaïque, plan de travail en pierre, proportions maîtrisées.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un espace élégant et fonctionnel où la matérialité devient vecteur d'expérience. Le bar s'impose comme un élément signature : une présence forte, au croisement de l'esthétique et de la performance technique.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal" style="grid-column:1/-1">
+      <img class="project-img" src="photos notion(4).png" alt="Mobilier sur mesure">
+      <div class="project-info project-info--rich">
+        <div class="project-type">Sur mesure</div>
+        <div class="project-name">Mobilier &amp; agencement intégré</div>
+        <div class="project-detail">
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Optimiser un espace sous pente en intégrant plusieurs fonctions : circulation, rangement et espace de vie. L'enjeu : structurer le volume sans alourdir visuellement l'ensemble.</p></div>
+          <div class="pd-block"><span class="pd-label">L'idée</span><p>Concevoir un aménagement global autour d'une structure bois unifiée. Relier escalier, cuisine et garde-corps dans une même écriture architecturale.</p></div>
+          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Conception et fabrication sur mesure de l'escalier, de la cuisine et des garde-corps. Structure bois apparente intégrant rangements, façades et éléments de séparation.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un espace cohérent et structuré où chaque élément s'intègre dans un tout. L'aménagement devient une pièce centrale, à la fois fonctionnelle et architecturale.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTOIRE / COMPAGNONNAGE -->
+<section class="compagnonnage" id="histoire">
+  <div class="compag-grid">
+    <div class="reveal">
+      <div class="label">Histoire</div>
+      <h2 class="compag-title">Un métier appris<br>par les <em>rencontres</em></h2>
+      <p class="compag-para">Il n'y a pas eu d'école unique, ni de chemin tracé d'avance. Il y a eu des rencontres. Un ébéniste qui enseigne le respect de la matière. Un menuisier-agenceur précurseur qui partage l'expérience du chantier. Un autre ébéniste talentueux, avec qui l'on partage un atelier et un savoir.</p>
+      <p class="compag-para">Et les architectes, que Raynald admire profondément — pour leur façon de penser l'espace avant de le dessiner. C'est de là qu'est née cette approche : étudier, comprendre, puis concevoir.</p>
+      <p class="compag-para">Derrière l'atelier, il y a une famille. Des concessions. Des coups de pouce qui permettent d'avancer, parfois d'investir. On garde contact avec les clients — parce que ce ne sont pas des chantiers, ce sont des moments de vie partagés.</p>
+      <p class="compag-para">On se retrouve souvent seul chez eux, avec leurs clés. Ce n'est pas anodin. Ça se mérite.</p>
+      <div class="compag-quote">"On ne garde pas les clés de quelqu'un<br>sans avoir mérité sa confiance."</div>
+    </div>
+    <div class="reveal">
+      <svg width="100%" viewBox="0 0 460 430" xmlns="http://www.w3.org/2000/svg">
+        <defs><style>.cl{font-family:Barlow,sans-serif;font-size:10px;fill:#7a7870;text-anchor:middle}.cn{font-family:Barlow,sans-serif;font-size:11px;font-weight:500;fill:#2a2a26;text-anchor:middle}.ci{font-family:'Cormorant Garamond',Georgia,serif;font-size:12px;fill:#7a7870;font-style:italic;text-anchor:middle}</style></defs>
+        <path d="M100 128 Q175 108 218 128" fill="none" stroke="#c8b89a" stroke-width="0.8" opacity="0.6"/>
+        <path d="M242 128 Q318 105 365 132" fill="none" stroke="#c8b89a" stroke-width="0.8" opacity="0.6"/>
+        <path d="M100 128 C135 200 185 245 222 282" fill="none" stroke="#e8e5de" stroke-width="0.7" stroke-dasharray="3 4"/>
+        <path d="M365 132 C330 205 290 248 238 282" fill="none" stroke="#e8e5de" stroke-width="0.7" stroke-dasharray="3 4"/>
+        <path d="M155 258 Q230 240 305 258" fill="none" stroke="#e8e5de" stroke-width="0.7" stroke-dasharray="2 4"/>
+        <path d="M230 148 L230 270" fill="none" stroke="#e8e5de" stroke-width="0.6" stroke-dasharray="2 5"/>
+        <circle cx="230" cy="128" r="28" fill="#1a1a18" opacity="0.05"/>
+        <circle cx="230" cy="121" r="14" fill="none" stroke="#1a1a18" stroke-width="1.5"/>
+        <circle cx="230" cy="117" r="5" fill="#1a1a18"/>
+        <path d="M216 133 Q230 142 244 133" fill="none" stroke="#1a1a18" stroke-width="1.5" stroke-linecap="round"/>
+        <text class="cn" x="230" y="154">Raynald EGEA</text>
+        <text class="cl" x="230" y="165">Concepteur · agencement</text>
+        <circle cx="100" cy="128" r="18" fill="#c8b89a" opacity="0.15"/>
+        <circle cx="100" cy="122" r="10" fill="none" stroke="#7a7870" stroke-width="1.2"/>
+        <circle cx="100" cy="118" r="3.5" fill="#7a7870"/>
+        <path d="M90 130 Q100 137 110 130" fill="none" stroke="#7a7870" stroke-width="1.1" stroke-linecap="round"/>
+        <text class="cn" x="100" y="145" style="font-size:10px">Ébéniste</text>
+        <text class="cl" x="100" y="155">Tradition · matière</text>
+        <circle cx="365" cy="132" r="18" fill="#c8b89a" opacity="0.15"/>
+        <circle cx="365" cy="126" r="10" fill="none" stroke="#7a7870" stroke-width="1.2"/>
+        <circle cx="365" cy="122" r="3.5" fill="#7a7870"/>
+        <path d="M355 134 Q365 141 375 134" fill="none" stroke="#7a7870" stroke-width="1.1" stroke-linecap="round"/>
+        <text class="cn" x="365" y="149" style="font-size:10px">Menuisier</text>
+        <text class="cl" x="365" y="159">Pose · fabrication</text>
+        <circle cx="155" cy="258" r="17" fill="#c8b89a" opacity="0.13"/>
+        <circle cx="155" cy="252" r="9" fill="none" stroke="#7a7870" stroke-width="1.1"/>
+        <circle cx="155" cy="249" r="3" fill="#7a7870"/>
+        <path d="M146 260 Q155 266 164 260" fill="none" stroke="#7a7870" stroke-width="1.1" stroke-linecap="round"/>
+        <text class="cn" x="155" y="274" style="font-size:10px">Ébéniste partagé</text>
+        <text class="cl" x="155" y="284">Atelier · précision</text>
+        <circle cx="305" cy="260" r="17" fill="#c8b89a" opacity="0.13"/>
+        <circle cx="305" cy="254" r="9" fill="none" stroke="#7a7870" stroke-width="1.1"/>
+        <circle cx="305" cy="251" r="3" fill="#7a7870"/>
+        <path d="M296 262 Q305 268 314 262" fill="none" stroke="#7a7870" stroke-width="1.1" stroke-linecap="round"/>
+        <text class="cn" x="305" y="276" style="font-size:10px">Architectes</text>
+        <text class="cl" x="305" y="286">Réflexion · espace</text>
+        <circle cx="230" cy="335" r="18" fill="#c8b89a" opacity="0.2"/>
+        <circle cx="230" cy="329" r="10" fill="none" stroke="#c8b89a" stroke-width="1.4"/>
+        <circle cx="230" cy="325" r="3.5" fill="#c8b89a"/>
+        <path d="M220 337 Q230 344 240 337" fill="none" stroke="#c8b89a" stroke-width="1.4" stroke-linecap="round"/>
+        <text class="cn" x="230" y="352" style="fill:#7a7870">La famille</text>
+        <text class="cl" x="230" y="362">Soutien · confiance</text>
+        <path d="M218 298 Q204 312 218 324" fill="none" stroke="#c8b89a" stroke-width="0.7" opacity="0.5"/>
+        <path d="M242 298 Q256 310 242 324" fill="none" stroke="#c8b89a" stroke-width="0.7" opacity="0.5"/>
+        <path d="M60 400 Q230 370 400 400" fill="none" stroke="#e8e5de" stroke-width="0.5" stroke-dasharray="2 4"/>
+        <circle cx="60" cy="400" r="2" fill="#c8b89a" opacity="0.4"/>
+        <circle cx="145" cy="382" r="2" fill="#c8b89a" opacity="0.5"/>
+        <circle cx="230" cy="376" r="3" fill="#1a1a18" opacity="0.35"/>
+        <circle cx="315" cy="382" r="2" fill="#c8b89a" opacity="0.5"/>
+        <circle cx="400" cy="400" r="2" fill="#c8b89a" opacity="0.4"/>
+        <text class="ci" x="230" y="420">élévation par les rencontres</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ILLUSTRATIONS -->
+<section style="background:var(--stone);padding:7rem 6rem" id="illustrations">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem">
+    <div>
+      <div class="label">Série illustrée</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.1">Six scènes,<br><em style="color:var(--muted)">une histoire</em></h2>
+    </div>
+    <span style="font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;max-width:220px;text-align:right;line-height:1.6">Illustrations à venir — réalisées par ma fille</span>
+  </div>
+  <div class="reveal" style="width:100%;overflow:hidden;border:.5px solid var(--line)">
+    <svg width="100%" viewBox="0 0 680 1080" role="img" xmlns="http://www.w3.org/2000/svg">
+      <title>Les 6 scènes — Atelier EGEA</title>
+      <defs><style>.sc-label{font-family:Barlow,sans-serif;font-size:11px;fill:#c8b89a;letter-spacing:0.15em}.sc-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:15px;fill:#1a1a18;font-style:italic}.sc-sub{font-family:Barlow,sans-serif;font-size:11px;fill:#7a7870}.sc-num{font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;fill:#e8e5de;font-weight:300}</style>
+      <marker id="arrs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#c8b89a" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+      <rect x="0" y="0" width="340" height="350" fill="#f4f2ed"/><text class="sc-num" x="24" y="48">01</text>
+      <circle cx="118" cy="118" r="14" fill="none" stroke="#1a1a18" stroke-width="1.2"/><line x1="118" y1="132" x2="118" y2="200" stroke="#1a1a18" stroke-width="1.2"/><line x1="118" y1="155" x2="95" y2="178" stroke="#1a1a18" stroke-width="1.2"/><line x1="118" y1="155" x2="138" y2="172" stroke="#1a1a18" stroke-width="1.2"/><line x1="118" y1="200" x2="100" y2="230" stroke="#1a1a18" stroke-width="1.2"/><line x1="118" y1="200" x2="136" y2="230" stroke="#1a1a18" stroke-width="1.2"/>
+      <circle cx="222" cy="118" r="14" fill="none" stroke="#7a7870" stroke-width="1.2"/><line x1="222" y1="132" x2="222" y2="200" stroke="#7a7870" stroke-width="1.2"/><line x1="222" y1="155" x2="202" y2="172" stroke="#7a7870" stroke-width="1.2"/><line x1="222" y1="155" x2="245" y2="178" stroke="#7a7870" stroke-width="1.2"/><line x1="222" y1="200" x2="204" y2="230" stroke="#7a7870" stroke-width="1.2"/><line x1="222" y1="200" x2="240" y2="230" stroke="#7a7870" stroke-width="1.2"/>
+      <line x1="138" y1="172" x2="170" y2="182" stroke="#1a1a18" stroke-width="1.2" stroke-linecap="round"/><line x1="202" y1="172" x2="170" y2="182" stroke="#7a7870" stroke-width="1.2" stroke-linecap="round"/><circle cx="170" cy="182" r="4" fill="#c8b89a"/>
+      <line x1="60" y1="230" x2="280" y2="230" stroke="#e8e5de" stroke-width="0.8"/>
+      <text class="sc-label" x="24" y="270">Scène 01</text><text class="sc-title" x="24" y="291">La rencontre</text><text class="sc-sub" x="24" y="308">Deux personnes. Quelque chose commence.</text><line x1="24" y1="326" x2="316" y2="326" stroke="#e8e5de" stroke-width="0.5"/>
+      <rect x="340" y="0" width="340" height="350" fill="#f4f2ed"/><text class="sc-num" x="364" y="48">02</text>
+      <rect x="380" y="195" width="240" height="8" fill="none" stroke="#1a1a18" stroke-width="0.8"/><rect x="400" y="182" width="120" height="13" fill="none" stroke="#c8b89a" stroke-width="1"/>
+      <circle cx="500" cy="100" r="16" fill="none" stroke="#7a7870" stroke-width="1"/><line x1="500" y1="116" x2="500" y2="182" stroke="#7a7870" stroke-width="1"/><line x1="500" y1="138" x2="472" y2="162" stroke="#7a7870" stroke-width="1"/><line x1="500" y1="138" x2="528" y2="155" stroke="#7a7870" stroke-width="1"/>
+      <circle cx="440" cy="110" r="13" fill="none" stroke="#1a1a18" stroke-width="1.4"/><line x1="440" y1="123" x2="440" y2="182" stroke="#1a1a18" stroke-width="1.4"/><line x1="440" y1="145" x2="420" y2="168" stroke="#1a1a18" stroke-width="1.4"/><line x1="440" y1="145" x2="460" y2="165" stroke="#1a1a18" stroke-width="1.4"/>
+      <line x1="472" y1="162" x2="453" y2="145" stroke="#7a7870" stroke-width="1" stroke-linecap="round"/><circle cx="453" cy="145" r="3" fill="#c8b89a"/>
+      <line x1="460" y1="165" x2="480" y2="182" stroke="#1a1a18" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="380" y1="230" x2="600" y2="230" stroke="#e8e5de" stroke-width="0.8"/>
+      <text class="sc-label" x="364" y="270">Scène 02</text><text class="sc-title" x="364" y="291">La transmission</text><text class="sc-sub" x="364" y="308">Un geste appris. Un savoir qui passe.</text><line x1="364" y1="326" x2="656" y2="326" stroke="#e8e5de" stroke-width="0.5"/>
+      <rect x="0" y="350" width="340" height="350" fill="#f4f2ed"/><text class="sc-num" x="24" y="398">03</text>
+      <line x1="100" y1="500" x2="155" y2="535" stroke="#7a7870" stroke-width="1.2" stroke-linecap="round"/><line x1="100" y1="500" x2="105" y2="475" stroke="#7a7870" stroke-width="1"/><line x1="100" y1="500" x2="90" y2="472" stroke="#7a7870" stroke-width="1"/>
+      <circle cx="168" cy="542" r="6" fill="none" stroke="#1a1a18" stroke-width="1.2"/><line x1="174" y1="542" x2="192" y2="542" stroke="#1a1a18" stroke-width="1.2"/><rect x="192" y="538" width="10" height="8" rx="1" fill="none" stroke="#1a1a18" stroke-width="1.1"/><line x1="202" y1="542" x2="214" y2="542" stroke="#1a1a18" stroke-width="1.2"/><rect x="214" y="538" width="8" height="8" rx="1" fill="none" stroke="#1a1a18" stroke-width="1.1"/><line x1="162" y1="548" x2="160" y2="558" stroke="#1a1a18" stroke-width="1"/><rect x="152" y="558" width="16" height="12" rx="1" fill="none" stroke="#c8b89a" stroke-width="1.2"/>
+      <line x1="240" y1="540" x2="222" y2="542" stroke="#1a1a18" stroke-width="1.4" stroke-linecap="round"/><line x1="240" y1="540" x2="248" y2="516" stroke="#1a1a18" stroke-width="1.4"/><line x1="240" y1="540" x2="258" y2="520" stroke="#1a1a18" stroke-width="1.4"/>
+      <rect x="130" y="440" width="80" height="110" fill="none" stroke="#e8e5de" stroke-width="0.8"/>
+      <line x1="60" y1="580" x2="280" y2="580" stroke="#e8e5de" stroke-width="0.8"/>
+      <text class="sc-label" x="24" y="620">Scène 03</text><text class="sc-title" x="24" y="641">Les clés</text><text class="sc-sub" x="24" y="658">La confiance ne se demande pas. Elle se mérite.</text><line x1="24" y1="676" x2="316" y2="676" stroke="#e8e5de" stroke-width="0.5"/>
+      <rect x="340" y="350" width="340" height="350" fill="#f4f2ed"/><text class="sc-num" x="364" y="398">04</text>
+      <rect x="390" y="530" width="200" height="6" fill="none" stroke="#1a1a18" stroke-width="0.8"/><line x1="400" y1="536" x2="400" y2="560" stroke="#1a1a18" stroke-width="0.8"/><line x1="580" y1="536" x2="580" y2="560" stroke="#1a1a18" stroke-width="0.8"/>
+      <rect x="452" y="500" width="26" height="30" rx="2" fill="none" stroke="#e8e5de" stroke-width="0.8" stroke-dasharray="3 3"/>
+      <circle cx="430" cy="475" r="10" fill="none" stroke="#1a1a18" stroke-width="1.1"/><line x1="430" y1="485" x2="430" y2="526" stroke="#1a1a18" stroke-width="1.1"/><line x1="430" y1="500" x2="416" y2="514" stroke="#1a1a18" stroke-width="1.1"/><line x1="430" y1="500" x2="444" y2="510" stroke="#1a1a18" stroke-width="1.1"/>
+      <path d="M416 520 Q430 516 444 520" fill="none" stroke="#c8b89a" stroke-width="1"/>
+      <circle cx="530" cy="458" r="12" fill="none" stroke="#1a1a18" stroke-width="1.1"/><line x1="530" y1="470" x2="530" y2="526" stroke="#1a1a18" stroke-width="1.1"/><line x1="530" y1="488" x2="510" y2="508" stroke="#1a1a18" stroke-width="1.1"/><line x1="530" y1="488" x2="550" y2="502" stroke="#1a1a18" stroke-width="1.1"/>
+      <line x1="510" y1="508" x2="488" y2="515" stroke="#1a1a18" stroke-width="1" stroke-linecap="round"/>
+      <line x1="380" y1="580" x2="600" y2="580" stroke="#e8e5de" stroke-width="0.8"/>
+      <text class="sc-label" x="364" y="620">Scène 04</text><text class="sc-title" x="364" y="641">La famille dans l'ombre</text><text class="sc-sub" x="364" y="658">Ceux qui croient, attendent, soutiennent.</text><line x1="364" y1="676" x2="656" y2="676" stroke="#e8e5de" stroke-width="0.5"/>
+      <rect x="0" y="700" width="340" height="350" fill="#f4f2ed"/><text class="sc-num" x="24" y="748">05</text>
+      <line x1="170" y1="775" x2="170" y2="940" stroke="#e8e5de" stroke-width="0.8"/>
+      <circle cx="90" cy="935" r="9" fill="none" stroke="#e8e5de" stroke-width="1"/>
+      <circle cx="130" cy="900" r="10" fill="none" stroke="#7a7870" stroke-width="1"/><line x1="130" y1="910" x2="130" y2="930" stroke="#7a7870" stroke-width="0.8"/>
+      <circle cx="170" cy="862" r="11" fill="none" stroke="#7a7870" stroke-width="1.1"/><line x1="170" y1="873" x2="170" y2="895" stroke="#7a7870" stroke-width="0.9"/>
+      <circle cx="210" cy="820" r="13" fill="none" stroke="#1a1a18" stroke-width="1.4"/><line x1="210" y1="833" x2="210" y2="858" stroke="#1a1a18" stroke-width="1.4"/><line x1="210" y1="845" x2="193" y2="862" stroke="#1a1a18" stroke-width="1.4"/><line x1="210" y1="845" x2="227" y2="858" stroke="#1a1a18" stroke-width="1.4"/><line x1="210" y1="858" x2="198" y2="878" stroke="#1a1a18" stroke-width="1.4"/><line x1="210" y1="858" x2="222" y2="878" stroke="#1a1a18" stroke-width="1.4"/>
+      <circle cx="250" cy="785" r="9" fill="none" stroke="#c8b89a" stroke-width="1" stroke-dasharray="3 2"/>
+      <path d="M90 935 Q140 880 170 862 Q200 840 210 820 Q228 798 250 785" fill="none" stroke="#c8b89a" stroke-width="0.8" stroke-dasharray="4 3"/>
+      <line x1="250" y1="785" x2="250" y2="758" stroke="#c8b89a" stroke-width="0.8" marker-end="url(#arrs)"/>
+      <line x1="60" y1="960" x2="280" y2="960" stroke="#e8e5de" stroke-width="0.8"/>
+      <text class="sc-label" x="24" y="990">Scène 05</text><text class="sc-title" x="24" y="1011">L'élévation</text><text class="sc-sub" x="24" y="1028">Chaque rencontre est un échelon.</text><line x1="24" y1="1046" x2="316" y2="1046" stroke="#e8e5de" stroke-width="0.5"/>
+      <rect x="340" y="700" width="340" height="350" fill="#f4f2ed"/><text class="sc-num" x="364" y="748">06</text>
+      <line x1="380" y1="930" x2="660" y2="930" stroke="#1a1a18" stroke-width="0.8"/><line x1="400" y1="780" x2="400" y2="930" stroke="#1a1a18" stroke-width="0.8"/><line x1="400" y1="780" x2="640" y2="780" stroke="#1a1a18" stroke-width="0.8"/><line x1="640" y1="780" x2="640" y2="930" stroke="#1a1a18" stroke-width="0.8"/>
+      <rect x="400" y="820" width="60" height="110" fill="none" stroke="#c8b89a" stroke-width="1.2"/><line x1="400" y1="850" x2="460" y2="850" stroke="#c8b89a" stroke-width="0.6"/><line x1="400" y1="878" x2="460" y2="878" stroke="#c8b89a" stroke-width="0.6"/><line x1="400" y1="906" x2="460" y2="906" stroke="#c8b89a" stroke-width="0.6"/>
+      <line x1="460" y1="930" x2="460" y2="910" stroke="#1a1a18" stroke-width="0.8"/><line x1="460" y1="910" x2="490" y2="910" stroke="#1a1a18" stroke-width="0.8"/><line x1="490" y1="910" x2="490" y2="888" stroke="#1a1a18" stroke-width="0.8"/><line x1="490" y1="888" x2="520" y2="888" stroke="#1a1a18" stroke-width="0.8"/><line x1="520" y1="888" x2="520" y2="866" stroke="#1a1a18" stroke-width="0.8"/><line x1="520" y1="866" x2="550" y2="866" stroke="#1a1a18" stroke-width="0.8"/><line x1="550" y1="866" x2="550" y2="844" stroke="#1a1a18" stroke-width="0.8"/><line x1="550" y1="844" x2="580" y2="844" stroke="#1a1a18" stroke-width="0.8"/>
+      <circle cx="610" cy="848" r="12" fill="none" stroke="#7a7870" stroke-width="1"/><line x1="610" y1="860" x2="610" y2="918" stroke="#7a7870" stroke-width="1"/><line x1="610" y1="878" x2="592" y2="898" stroke="#7a7870" stroke-width="1"/><line x1="610" y1="878" x2="628" y2="898" stroke="#7a7870" stroke-width="1"/><line x1="610" y1="918" x2="596" y2="930" stroke="#7a7870" stroke-width="1"/><line x1="610" y1="918" x2="624" y2="930" stroke="#7a7870" stroke-width="1"/>
+      <line x1="380" y1="958" x2="660" y2="958" stroke="#e8e5de" stroke-width="0.8"/>
+      <text class="sc-label" x="364" y="990">Scène 06</text><text class="sc-title" x="364" y="1011">Le projet terminé</text><text class="sc-sub" x="364" y="1028">Reculer. Voir. Savoir que c'est bien fait.</text><line x1="364" y1="1046" x2="656" y2="1046" stroke="#e8e5de" stroke-width="0.5"/>
+      <line x1="340" y1="20" x2="340" y2="1060" stroke="#e8e5de" stroke-width="0.5"/><line x1="20" y1="350" x2="660" y2="350" stroke="#e8e5de" stroke-width="0.5"/><line x1="20" y1="700" x2="660" y2="700" stroke="#e8e5de" stroke-width="0.5"/>
+      <text class="sc-sub" x="340" y="1072" text-anchor="middle" style="font-size:10px;letter-spacing:0.15em;fill:#c8b89a">ATELIER EGEA — SÉRIE ILLUSTRÉE</text>
+    </svg>
+  </div>
+  <p style="margin-top:2rem;font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--muted);text-align:center">Ces illustrations seront réalisées par ma fille — à sa façon, avec son trait.</p>
+</section>
+
+<!-- DÉMARCHE -->
+<section class="demarche" id="demarche">
+  <div>
+    <div class="label">Processus</div>
+    <h2 class="demarche-title">Du projet<br>à la<br><em>réalisation</em></h2>
+  </div>
+  <div>
+    <div class="step reveal"><span class="step-num">01</span><div><div class="step-name">Rencontre &amp; écoute</div><p class="step-desc">Première rencontre pour comprendre votre espace, vos usages, vos envies et vos contraintes. C'est ici que le projet prend racine.</p></div></div>
+    <div class="step reveal"><span class="step-num">02</span><div><div class="step-name">Conception &amp; modélisation</div><p class="step-desc">Traduction de vos besoins en propositions concrètes — plans, croquis, projections 3D. Sur les projets d'envergure, cette prestation de conception est valorisée indépendamment.</p></div></div>
+    <div class="step reveal"><span class="step-num">03</span><div><div class="step-name">Validation &amp; devis</div><p class="step-desc">Ajustements, choix définitifs des matériaux, devis précis. Aucune surprise en cours de route.</p></div></div>
+    <div class="step reveal"><span class="step-num">04</span><div><div class="step-name">Fabrication en atelier</div><p class="step-desc">Usinage, ponçage, finitions, montage à blanc. Contrôle qualité complet avant toute livraison.</p></div></div>
+    <div class="step reveal"><span class="step-num">05</span><div><div class="step-name">Pose &amp; réception</div><p class="step-desc">Installation avec le même soin que la conception. Réception contradictoire, levée des réserves, clôture du dossier.</p></div></div>
+  </div>
+</section>
+
+<!-- PROCESSUS DÉTAILLÉ -->
+<section class="processus" id="processus">
+  <div class="label">Charte de fonctionnement</div>
+  <h2 class="proc-title">Notre processus, en détail</h2>
+  <div class="phase-nav">
+    <button class="phase-btn active" onclick="showPhase(1)"><span class="pn">Phase 01</span><span class="pl">Formation</span><span class="ps">Client &amp; projet</span></button>
+    <button class="phase-btn" onclick="showPhase(2)"><span class="pn">Phase 02</span><span class="pl">Conception</span><span class="ps">Étude &amp; devis</span></button>
+    <button class="phase-btn" onclick="showPhase(3)"><span class="pn">Phase 03</span><span class="pl">Fabrication</span><span class="ps">Atelier &amp; livraison</span></button>
+    <button class="phase-btn" onclick="showPhase(4)"><span class="pn">Phase 04</span><span class="pl">Pose &amp; réception</span><span class="ps">Chantier &amp; clôture</span></button>
+  </div>
+  <div id="pp1" class="phase-content visible">
+    <div class="sflow">
+      <div class="srow"><div class="snum">01</div><div><div class="stitle">Identification du projet</div><div class="sdesc">Réception de la demande. Qualification : type de projet, espace, localisation, délai.</div></div></div>
+      <div class="srow"><div class="snum">02</div><div><div class="stitle">Planification du rendez-vous</div><div class="sdesc">Fixation d'une date de visite. Confirmation avec les éléments à préparer.</div></div></div>
+      <div class="srow"><div class="snum">03</div><div><div class="stitle">Visite &amp; relevé de cotes</div><div class="sdesc">Mesures complètes, relevé photographique, identification des contraintes techniques.<span class="snote">Outil clé — sans relevé précis, pas de conception fiable</span></div></div></div>
+      <div class="srow"><div class="snum">04</div><div><div class="stitle">Écoute des besoins &amp; contraintes</div><div class="sdesc">Usages, priorités fonctionnelles, préférences esthétiques, budget, délai, matériaux.</div></div></div>
+    </div>
+  </div>
+  <div id="pp2" class="phase-content">
+    <div class="sflow">
+      <div class="srow"><div class="snum">05</div><div><div class="stitle">Conception &amp; plans</div><div class="sdesc">Propositions : plans techniques, coupes, vues 3D, choix des matériaux et finitions.<div class="hdark"><strong>Modélisation &amp; projections 3D incluses.</strong> Sur les projets complexes, nous réalisons une modélisation immersive. Ce travail est <strong>chronophage et valorisé</strong> — la conception peut être facturée indépendamment si le devis n'est pas accepté.</div></div></div></div>
+      <div class="srow"><div class="snum">06</div><div><div class="stitle">Présentation — 3 propositions</div><div class="sdesc">Présentation de 3 pistes distinctes. Discussion, ajustements, arbitrages.</div></div></div>
+      <div class="srow"><div class="snum">07</div><div><div class="stitle">Validation ou ajustements</div><div class="sdesc"><div class="sbranch"><div class="branch"><div class="blabel">Validé</div><div class="btext">Passage à l'établissement du devis</div></div><div class="branch"><div class="blabel">Modifications</div><div class="btext">Retour en conception — nouvelle présentation</div></div></div></div></div></div>
+      <div class="srow"><div class="snum">08</div><div><div class="stitle">Devis envoyé</div><div class="sdesc">Devis détaillé : fournitures, main-d'œuvre, délais, conditions de paiement.</div></div></div>
+      <div class="srow"><div class="snum">09</div><div><div class="stitle">Devis signé &amp; acompte reçu</div><div class="sdesc">Lancement officiel en fabrication.<span class="snote">Jalon — le projet entre en production</span></div></div></div>
+    </div>
+  </div>
+  <div id="pp3" class="phase-content">
+    <div class="sflow">
+      <div class="srow"><div class="snum">10</div><div><div class="stitle">Commande des matériaux</div><div class="sdesc">Approvisionnement bois, panneaux, quincaillerie, finitions. Réception en atelier.</div></div></div>
+      <div class="srow"><div class="snum">11</div><div><div class="stitle">Lancement fabrication</div><div class="sdesc">Mise en production selon les plans validés. Organisation du planning atelier.</div></div></div>
+      <div class="srow"><div class="snum">12</div><div><div class="stitle">Usinage &amp; ponçage</div><div class="sdesc">Découpe, usinage, assemblage, ponçage progressif jusqu'à la surface parfaite.</div></div></div>
+      <div class="srow"><div class="snum">13</div><div><div class="stitle">Finitions — vernis, peinture, traitement</div><div class="sdesc">Application selon spécifications validées. Séchage et contrôle qualité.</div></div></div>
+      <div class="srow"><div class="snum">14</div><div><div class="stitle">Montage à blanc &amp; contrôle</div><div class="sdesc">Pré-assemblage complet en atelier avant livraison.<span class="snote">Zéro surprise sur site</span></div></div></div>
+      <div class="srow"><div class="snum">15</div><div><div class="stitle">Emballage, protection &amp; livraison</div><div class="sdesc">Protection individuelle de chaque pièce. Transport à la date convenue.</div></div></div>
+    </div>
+  </div>
+  <div id="pp4" class="phase-content">
+    <div class="sflow">
+      <div class="srow"><div class="snum">16</div><div><div class="stitle">Date de pose planifiée</div><div class="sdesc">Confirmation de l'intervention, organisation de l'accès et préparation du chantier.</div></div></div>
+      <div class="srow"><div class="snum">17</div><div><div class="stitle">Pose effectuée</div><div class="sdesc">Installation complète : assemblage, fixation, ajustements de précision.</div></div></div>
+      <div class="srow"><div class="snum">18</div><div><div class="stitle">Contrôle finitions sur site</div><div class="sdesc">Vérification systématique. Retouches si nécessaire.<span class="snote">Finitions OK — convocation à réception</span></div></div></div>
+      <div class="srow"><div class="snum">19</div><div><div class="stitle">Réception chantier</div><div class="sdesc"><div class="sbranch"><div class="branch"><div class="blabel">Sans réserve</div><div class="btext">Réception prononcée — facturation et clôture</div></div><div class="branch"><div class="blabel">Avec réserves</div><div class="btext">Liste établie, délai fixé, intervention programmée</div></div></div></div></div></div>
+      <div class="srow"><div class="snum">20</div><div><div class="stitle">Facture réglée &amp; clôture</div><div class="sdesc">Règlement du solde. Clôture financière et administrative du dossier.</div></div></div>
+      <div class="srow"><div class="snum">21</div><div><div class="stitle">Photo finale &amp; archivage</div><div class="sdesc">Photos de réception pour le book Atelier EGEA. Archivage complet du dossier.<span class="snote">Chantier terminé</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section class="apropos" id="apropos" style="padding:0">
+  <div class="apropos-vis">
+    <svg width="100%" viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
+      <defs><style>.al{font-family:Barlow,sans-serif;font-size:10px;fill:#7a7870;text-anchor:middle}.an{font-family:Barlow,sans-serif;font-size:10px;font-weight:500;fill:#2a2a26;text-anchor:middle}.aq{font-family:'Cormorant Garamond',Georgia,serif;font-size:12px;fill:#2a2a26;font-style:italic;text-anchor:middle}</style></defs>
+      <circle cx="190" cy="105" r="38" fill="none" stroke="#c8b89a" stroke-width="0.4" stroke-dasharray="2 4" opacity="0.7"/>
+      <circle cx="190" cy="105" r="68" fill="none" stroke="#c8b89a" stroke-width="0.3" stroke-dasharray="1 6" opacity="0.4"/>
+      <circle cx="190" cy="105" r="98" fill="none" stroke="#c8b89a" stroke-width="0.2" stroke-dasharray="1 8" opacity="0.25"/>
+      <circle cx="190" cy="105" r="16" fill="none" stroke="#1a1a18" stroke-width="1.3"/>
+      <circle cx="190" cy="100" r="5.5" fill="#1a1a18"/>
+      <path d="M178 114 Q190 122 202 114" fill="none" stroke="#1a1a18" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="122" cy="78" r="7" fill="none" stroke="#7a7870" stroke-width="1"/>
+      <circle cx="122" cy="75" r="2.5" fill="#7a7870"/>
+      <path d="M115 83 Q122 88 129 83" fill="none" stroke="#7a7870" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="258" cy="80" r="7" fill="none" stroke="#7a7870" stroke-width="1"/>
+      <circle cx="258" cy="77" r="2.5" fill="#7a7870"/>
+      <path d="M251 85 Q258 90 265 85" fill="none" stroke="#7a7870" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="135" cy="168" r="7" fill="none" stroke="#7a7870" stroke-width="1"/>
+      <circle cx="135" cy="165" r="2.5" fill="#7a7870"/>
+      <path d="M128 173 Q135 178 142 173" fill="none" stroke="#7a7870" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="245" cy="170" r="7" fill="none" stroke="#7a7870" stroke-width="1"/>
+      <circle cx="245" cy="167" r="2.5" fill="#7a7870"/>
+      <path d="M238 175 Q245 180 252 175" fill="none" stroke="#7a7870" stroke-width="1" stroke-linecap="round"/>
+      <circle cx="190" cy="193" r="7" fill="none" stroke="#c8b89a" stroke-width="1.2"/>
+      <circle cx="190" cy="190" r="2.5" fill="#c8b89a"/>
+      <path d="M183 198 Q190 203 197 198" fill="none" stroke="#c8b89a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="174" y1="105" x2="129" y2="85" stroke="#c8b89a" stroke-width="0.6" opacity="0.45"/>
+      <line x1="206" y1="105" x2="251" y2="87" stroke="#c8b89a" stroke-width="0.6" opacity="0.45"/>
+      <line x1="180" y1="117" x2="142" y2="161" stroke="#c8b89a" stroke-width="0.5" opacity="0.35"/>
+      <line x1="200" y1="117" x2="238" y2="163" stroke="#c8b89a" stroke-width="0.5" opacity="0.35"/>
+      <line x1="190" y1="121" x2="190" y2="186" stroke="#c8b89a" stroke-width="0.5" opacity="0.35"/>
+      <text class="an" x="190" y="135">R. EGEA</text>
+      <text class="al" x="122" y="95">Ébéniste</text>
+      <text class="al" x="258" y="97">Menuisier</text>
+      <text class="al" x="122" y="186">Atelier</text>
+      <text class="al" x="258" y="188">Architectes</text>
+      <text class="al" x="190" y="210">Famille</text>
+      <text class="aq" x="190" y="258">Un métier de rencontres,</text>
+      <text class="aq" x="190" y="274">de confiance et de matière.</text>
+      <path d="M55 300 Q190 282 325 300" fill="none" stroke="#c8b89a" stroke-width="0.4" stroke-dasharray="2 4" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="apropos-text reveal">
+    <div class="label">À propos</div>
+    <h2 class="apropos-title">Raynald EGEA —<br><em>artisan, concepteur</em></h2>
+    <p class="apropos-para">Le métier s'est construit par les rencontres. Un ébéniste qui enseigne la matière. Un menuisier-agenceur qui transmet l'expérience du terrain. Un atelier partagé où l'on apprend encore chaque jour. Et les architectes, admirés pour leur façon de penser avant de tracer.</p>
+    <p class="apropos-para">De tout ça est née une approche : penser l'espace presque comme un architecte, le fabriquer comme un artisan. Étudier les contraintes. Guider les choix. Élaborer des solutions sur mesure. Agencer avec soin.</p>
+    <p class="apropos-para">On se retrouve souvent seul chez les clients, avec leurs clés. Ce n'est pas anodin. Ça se mérite. Et souvent, on garde contact — parce que ce ne sont pas des chantiers, ce sont des projets de vie.</p>
+    <p class="apropos-para">Derrière l'atelier, il y a une famille qui croit en ce projet depuis le début. C'est pour ça qu'on peut arriver au travail et donner le meilleur.</p>
+    <div class="apropos-sig">— Raynald EGEA<br><span style="font-size:.9rem;font-style:normal;color:var(--muted)">Normandie &amp; Île-de-France</span></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <div class="label">Travaillons ensemble</div>
+    <h2 class="contact-title">Un projet<br>en <em>tête ?</em></h2>
+    <p class="contact-meta">Raynald EGEA<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="600114050c0905120507050120070d01090c4e030f0d">[email&#160;protected]</a></p>
+    <p class="contact-zone">Normandie &amp; Île-de-France</p>
+  </div>
+  <form class="cform" onsubmit="handleSubmit(event)">
+    <div class="crow">
+      <div class="cfield"><label>Prénom &amp; nom</label><input type="text" placeholder="Marie Dupont" required></div>
+      <div class="cfield"><label>Email</label><input type="email" placeholder="marie@exemple.fr" required></div>
+    </div>
+    <div class="cfield">
+      <label>Type de projet</label>
+      <select>
+        <option value="">Sélectionner...</option>
+        <option>Aménagement résidentiel</option>
+        <option>Aménagement professionnel</option>
+        <option>Mobilier sur mesure</option>
+        <option>Escalier sur mesure</option>
+        <option>Espace commercial</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="cfield"><label>Votre message</label><textarea placeholder="Décrivez votre projet en quelques mots..." required></textarea></div>
+    <button type="submit" class="csubmit" id="submitBtn">Envoyer le message →</button>
+  </form>
+</section>
+
+<footer>
+  <span class="f-logo">Atelier EGEA — Aménagements sur mesure · Raynald EGEA</span>
+  <span class="f-sub">Étudier · Guider · Élaborer · Agencer</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function showPhase(n) {
+  [1,2,3,4].forEach(i => {
+    document.getElementById('pp'+i).classList.remove('visible');
+    document.querySelectorAll('.phase-btn')[i-1].classList.remove('active');
+  });
+  document.getElementById('pp'+n).classList.add('visible');
+  document.querySelectorAll('.phase-btn')[n-1].classList.add('active');
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name = f.querySelector('input[type="text"]').value;
+  const email = f.querySelector('input[type="email"]').value;
+  const type = f.querySelector('select').value;
+  const msg = f.querySelector('textarea').value;
+  const subj = encodeURIComponent('Atelier EGEA — ' + (type || 'Demande de projet'));
+  const body = encodeURIComponent('Nom : ' + name + '\nEmail : ' + email + '\nType : ' + (type||'Non précisé') + '\n\n' + msg);
+  window.location.href = 'mailto:atelieregea@gmail.com?subject='+subj+'&body='+body;
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Message prêt ✓';
+  btn.style.borderColor = 'var(--warm)';
+  btn.style.color = 'var(--warm)';
+}
+</script>
+</body>
+</html>
