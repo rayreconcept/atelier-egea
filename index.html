@@ -50,7 +50,7 @@ section{padding:7rem 6rem}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .project-card.large{grid-column:span 1}
-.project-img{width:100%;height:auto;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
+.project-img{width:100%;aspect-ratio:3/4;object-fit:contain;background:var(--mist);display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
   .project-card:hover .project-info{transform:translateY(0)}
@@ -63,7 +63,6 @@ section{padding:7rem 6rem}
 .project-detail{margin-top:1rem;display:flex;flex-direction:column;gap:.7rem;opacity:0;transition:opacity .3s .1s}
 .pd-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:.35rem;font-weight:500}
 .pd-block p{font-size:13px;color:rgba(244,242,237,.82);line-height:1.7;margin:0}
-.project-card:hover .project-info{transform:translateY(0)}
 .project-type{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:.4rem}
 .project-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:.2rem}
 .compagnonnage{background:var(--mist)}
