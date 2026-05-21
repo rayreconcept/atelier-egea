@@ -50,7 +50,7 @@ section{padding:7rem 6rem}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .project-card.large{grid-column:span 1}
-.project-img{width:100%;aspect-ratio:3/4;object-fit:contain;background:var(--mist);display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
+.project-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
   .project-card:hover .project-info{transform:translateY(0)}
