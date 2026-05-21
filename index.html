@@ -50,8 +50,10 @@ section{padding:7rem 6rem}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer}
 .project-card.large{grid-column:span 1}
-.project-img{width:100%;aspect-ratio:1333/1999;object-fit:contain;background:#f0ede6;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
-.project-card.large .project-img{aspect-ratio:1333/1999;object-fit:contain;background:#f0ede6}
+.project-img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f0ede6;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
+.project-card.large .project-img{aspect-ratio:4/5;object-fit:cover}
+.project-card.touch-active .project-info{transform:translateY(0)}
+.project-card.touch-active .project-detail{opacity:1}
 .project-card:hover .project-img{transform:scale(1.05);filter:grayscale(0%)}
 .project-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.5rem 1.2rem;background:linear-gradient(transparent 0%,rgba(16,16,14,.85) 25%,rgba(16,16,14,.97) 100%);transform:translateY(100%);transition:transform .45s cubic-bezier(.25,0,.25,1);overflow:hidden}
 .project-info--rich{transform:translateY(100%)}
@@ -171,10 +173,10 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
 <!-- HERO -->
 <section class="hero" style="padding:0">
   <div class="hero-left">
-    <span class="hero-eyebrow">Aménagements sur mesure</span>
+    <span class="hero-eyebrow">Artisan agenceur-fabricant · Rouen</span>
     <h1 class="hero-title">Penser<br>l'espace,<br><em>autrement.</em></h1>
-    <p class="hero-tagline">Étudier · Guider · Élaborer · Agencer</p>
-    <p class="hero-desc">Une approche fondée sur l'équilibre entre usages, contraintes et matière, au service de l'espace — personnel ou professionnel.</p>
+    <p class="hero-tagline">Cuisines · Dressings · Escaliers · Mobilier sur mesure</p>
+    <p class="hero-desc">Je conçois, fabrique en atelier et pose vos aménagements sur mesure — du plan à la finition, pour les particuliers et les professionnels.</p>
     <a href="#realisations" class="hero-cta">Voir les réalisations →</a>
   </div>
   <div class="hero-right">
@@ -254,16 +256,39 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal" style="grid-column:1/-1">
+    <div class="project-card reveal">
       <img class="project-img" src="photos notion(4).png" alt="Mobilier sur mesure">
       <div class="project-info project-info--rich">
         <div class="project-type">Sur mesure</div>
         <div class="project-name">Mobilier &amp; agencement intégré</div>
         <div class="project-detail">
-          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Optimiser un espace sous pente en intégrant plusieurs fonctions : circulation, rangement et espace de vie. L'enjeu : structurer le volume sans alourdir visuellement l'ensemble.</p></div>
-          <div class="pd-block"><span class="pd-label">L'idée</span><p>Concevoir un aménagement global autour d'une structure bois unifiée. Relier escalier, cuisine et garde-corps dans une même écriture architecturale.</p></div>
-          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Conception et fabrication sur mesure de l'escalier, de la cuisine et des garde-corps. Structure bois apparente intégrant rangements, façades et éléments de séparation.</p></div>
-          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un espace cohérent et structuré où chaque élément s'intègre dans un tout. L'aménagement devient une pièce centrale, à la fois fonctionnelle et architecturale.</p></div>
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Optimiser un espace sous pente en intégrant circulation, rangement et espace de vie sans alourdir le volume.</p></div>
+          <div class="pd-block"><span class="pd-label">L'idée</span><p>Relier escalier, cuisine et garde-corps dans une même écriture bois unifiée.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un aménagement cohérent où chaque élément s'intègre dans un tout fonctionnel et architectural.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <img class="project-img" src="photos notion(14).png" alt="Booth DJ sur mesure">
+      <div class="project-info project-info--rich">
+        <div class="project-type">Création sur mesure</div>
+        <div class="project-name">Booth DJ &amp; habillage scène</div>
+        <div class="project-detail">
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Concevoir un espace de performance sur mesure, fonctionnel et identitaire.</p></div>
+          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Structure bois sur mesure, intégration technique, finitions adaptées à l'environnement scénique.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un espace de jeu à l'identité forte, répondant aux contraintes techniques du live.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <img class="project-img" src="photos notion(15).png" alt="Bureau bibliothèque sur mesure">
+      <div class="project-info project-info--rich">
+        <div class="project-type">Espace personnel</div>
+        <div class="project-name">Bureau &amp; bibliothèque intégrés</div>
+        <div class="project-detail">
+          <div class="pd-block"><span class="pd-label">Le besoin</span><p>Intégrer un espace de travail et de rangement dans un volume existant, sans alourdir la pièce.</p></div>
+          <div class="pd-block"><span class="pd-label">Réalisation</span><p>Bibliothèque sur mesure avec bureau intégré, optimisation des volumes, finitions soignées.</p></div>
+          <div class="pd-block"><span class="pd-label">Résultat</span><p>Un aménagement compact et lisible qui s'intègre naturellement dans son environnement.</p></div>
         </div>
       </div>
     </div>
@@ -563,6 +588,19 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
 </footer>
 
 <script>
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('click', function() {
+    const isActive = this.classList.contains('touch-active');
+    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('touch-active'));
+    if (!isActive) this.classList.add('touch-active');
+  });
+});
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.project-card')) {
+    document.querySelectorAll('.project-card').forEach(c => c.classList.remove('touch-active'));
+  }
+});
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
 }, { threshold: 0.1 });
