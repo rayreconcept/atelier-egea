@@ -50,15 +50,13 @@ section{padding:7rem 6rem}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .project-card.large{grid-column:span 1}
-.project-vedette{grid-column:1/-1;min-height:70vh;display:grid;grid-template-columns:1fr}
-.vedette-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:3fr 2fr;gap:2px}
-.vm-main{background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
-.vm-side{display:grid;grid-template-rows:1fr 1fr 1fr;gap:2px}
-.vm-top,.vm-mid,.vm-bottom{background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
+.project-vedette{grid-column:1/-1;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.vedette-mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.vm-cell{aspect-ratio:4/3;background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
 .vedette-label{position:absolute;top:2rem;left:2rem;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.5);z-index:2}
 .vedette-label span{display:inline-block;width:1.5rem;height:.5px;background:rgba(244,242,237,.4);vertical-align:middle;margin-right:.8rem}
-@media(hover:hover){.project-vedette:hover .vm-main,.project-vedette:hover .vm-top,.project-vedette:hover .vm-mid,.project-vedette:hover .vm-bottom{transform:scale(1.03)}}
-.project-vedette.touch-active .vm-main,.project-vedette.touch-active .vm-top,.project-vedette.touch-active .vm-mid,.project-vedette.touch-active .vm-bottom{transform:scale(1.03)}
+@media(hover:hover){.project-vedette:hover .vm-cell{transform:scale(1.03)}}
+.project-vedette.touch-active .vm-cell{transform:scale(1.03)}
 .project-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
@@ -74,11 +72,6 @@ section{padding:7rem 6rem}
 .pd-block p{font-size:13px;color:rgba(244,242,237,.82);line-height:1.7;margin:0}
 .project-type{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:.4rem}
 .project-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:.2rem}
-.galerie-section{max-width:1200px;margin:0 auto;padding:0 2rem 6rem}
-.galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.galerie-cell{aspect-ratio:1/1;background-size:cover;background-position:center;overflow:hidden;transition:transform .7s cubic-bezier(.25,0,.25,1)}
-.galerie-cell.g-wide{grid-column:span 2;aspect-ratio:2/1}
-@media(hover:hover){.galerie-cell:hover{transform:scale(1.02)}}
 .compagnonnage{background:var(--mist)}
 .compag-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .compag-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:2rem}
@@ -167,7 +160,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large,.project-vedette{grid-column:1!important}
   .project-vedette{min-height:85vw}
   .vedette-mosaic{grid-template-columns:1fr 1fr}
-  .galerie-grid{grid-template-columns:repeat(2,1fr)}.galerie-cell.g-wide{grid-column:auto;aspect-ratio:1/1}
+  .vedette-mosaic{grid-template-columns:repeat(2,1fr)}
   .phase-nav{grid-template-columns:repeat(2,1fr)}
   footer{flex-direction:column;gap:1rem;padding:1.5rem 2.5rem;text-align:center}
 }
@@ -310,12 +303,18 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
     </div>
     <div class="project-card project-vedette reveal" style="grid-column:1/-1">
       <div class="vedette-mosaic">
-        <div class="vm-main" style="background-image:url('airbnb-bibliotheque.jpg')"></div>
-        <div class="vm-side">
-          <div class="vm-top" style="background-image:url('airbnb-chambre.jpg')"></div>
-          <div class="vm-mid" style="background-image:url('airbnb-vue.jpg')"></div>
-          <div class="vm-bottom" style="background-image:url('airbnb-salon.jpg')"></div>
-        </div>
+        <div class="vm-cell" style="background-image:url('airbnb-bibliotheque.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-escalier.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-salon.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('airbnb-salon.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-biblio.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('airbnb-vue.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-mur.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-vue.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('airbnb-chambre.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-tasseaux.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-bois.jpg')"></div>
+        <div class="vm-cell" style="background-image:url('galerie-panneau.jpg')"></div>
       </div>
       <div class="vedette-label"><span></span>Airbnb · Rouen</div>
       <div class="project-info project-info--rich">
@@ -330,20 +329,6 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
     </div>
   </div>
 </section>
-
-<!-- GALERIE -->
-<div class="galerie-section">
-  <div class="galerie-grid">
-    <div class="galerie-cell g-wide reveal" style="background-image:url('galerie-escalier.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-mur.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-bois.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-biblio.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-tasseaux.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-panneau.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-vue.jpg')"></div>
-    <div class="galerie-cell reveal" style="background-image:url('galerie-salon.jpg')"></div>
-  </div>
-</div>
 
 <!-- HISTOIRE / COMPAGNONNAGE -->
 <section class="compagnonnage" id="histoire">
