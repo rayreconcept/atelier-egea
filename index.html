@@ -53,12 +53,12 @@ section{padding:7rem 6rem}
 .project-vedette{grid-column:1/-1;min-height:70vh;display:grid;grid-template-columns:1fr}
 .vedette-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:3fr 2fr;gap:2px}
 .vm-main{background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
-.vm-side{display:grid;grid-template-rows:1fr 1fr;gap:2px}
-.vm-top,.vm-bottom{background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
+.vm-side{display:grid;grid-template-rows:1fr 1fr 1fr;gap:2px}
+.vm-top,.vm-mid,.vm-bottom{background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
 .vedette-label{position:absolute;top:2rem;left:2rem;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.5);z-index:2}
 .vedette-label span{display:inline-block;width:1.5rem;height:.5px;background:rgba(244,242,237,.4);vertical-align:middle;margin-right:.8rem}
-@media(hover:hover){.project-vedette:hover .vm-main,.project-vedette:hover .vm-top,.project-vedette:hover .vm-bottom{transform:scale(1.03)}}
-.project-vedette.touch-active .vm-main,.project-vedette.touch-active .vm-top,.project-vedette.touch-active .vm-bottom{transform:scale(1.03)}
+@media(hover:hover){.project-vedette:hover .vm-main,.project-vedette:hover .vm-top,.project-vedette:hover .vm-mid,.project-vedette:hover .vm-bottom{transform:scale(1.03)}}
+.project-vedette.touch-active .vm-main,.project-vedette.touch-active .vm-top,.project-vedette.touch-active .vm-mid,.project-vedette.touch-active .vm-bottom{transform:scale(1.03)}
 .project-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
@@ -307,6 +307,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         <div class="vm-main" style="background-image:url('airbnb-bibliotheque.jpg')"></div>
         <div class="vm-side">
           <div class="vm-top" style="background-image:url('airbnb-chambre.jpg')"></div>
+          <div class="vm-mid" style="background-image:url('airbnb-vue.jpg')"></div>
           <div class="vm-bottom" style="background-image:url('airbnb-salon.jpg')"></div>
         </div>
       </div>
