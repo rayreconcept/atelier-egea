@@ -588,18 +588,23 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
 </footer>
 
 <script>
+let _ty = 0;
 document.querySelectorAll('.project-card').forEach(card => {
-  card.addEventListener('click', function() {
+  card.addEventListener('touchstart', function(e) {
+    _ty = e.touches[0].clientY;
+  }, {passive: true});
+  card.addEventListener('touchend', function(e) {
+    if (Math.abs(e.changedTouches[0].clientY - _ty) > 10) return;
     const isActive = this.classList.contains('touch-active');
     document.querySelectorAll('.project-card').forEach(c => c.classList.remove('touch-active'));
     if (!isActive) this.classList.add('touch-active');
-  });
+  }, {passive: true});
 });
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.project-card')) {
+document.addEventListener('touchend', function(e) {
+  if (Math.abs(e.changedTouches[0].clientY - _ty) > 10) return;
+  if (!e.target.closest('.project-card'))
     document.querySelectorAll('.project-card').forEach(c => c.classList.remove('touch-active'));
-  }
-});
+}, {passive: true});
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
