@@ -50,14 +50,8 @@ section{padding:7rem 6rem}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .project-card.large{grid-column:span 1}
-.project-vedette{grid-column:1/-1;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent;background:var(--stone)}
-.vedette-mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(180px,22vw,320px);gap:1.2rem}
-.vm-cell{background-size:cover;background-position:center;transition:transform .7s cubic-bezier(.25,0,.25,1)}
-.vm-wide{grid-column:span 2}
-.vedette-label{position:absolute;top:2rem;left:2rem;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:rgba(244,242,237,.5);z-index:2}
-.vedette-label span{display:inline-block;width:1.5rem;height:.5px;background:rgba(244,242,237,.4);vertical-align:middle;margin-right:.8rem}
-@media(hover:hover){.project-vedette:hover .vm-cell{transform:scale(1.03)}}
-.project-vedette.touch-active .vm-cell{transform:scale(1.03)}
+.airbnb-photo{aspect-ratio:1/1;background-size:cover;background-position:center}
+.airbnb-wide{background-size:cover;background-position:center}
 .project-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
@@ -158,9 +152,8 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   section,.compagnonnage,.processus{padding:5rem 2.5rem}
   .approche,.demarche,.contact,.compag-grid,.apropos{grid-template-columns:1fr;gap:3rem}
   .apropos-text{padding:3rem 2.5rem}.apropos-vis{padding:3rem 2.5rem}
-  .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large,.project-vedette{grid-column:1!important}
-  .project-vedette{min-height:85vw}
-  .vedette-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:40vw}.vm-wide{grid-column:span 1}
+  .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large{grid-column:1!important}
+  .airbnb-wide{aspect-ratio:4/3}
   .phase-nav{grid-template-columns:repeat(2,1fr)}
   footer{flex-direction:column;gap:1rem;padding:1.5rem 2.5rem;text-align:center}
 }
@@ -301,24 +294,9 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card project-vedette reveal" style="grid-column:1/-1">
-      <div class="vedette-mosaic">
-        <div class="vm-cell vm-wide" style="background-image:url('airbnb-bibliotheque.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('galerie-escalier.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('galerie-salon.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('galerie-biblio.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('galerie-mur.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('airbnb-vue.jpg')"></div>
-        <div class="vm-cell vm-wide" style="background-image:url('galerie-vue.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('airbnb-chambre.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('galerie-tasseaux.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('airbnb-salon.jpg')"></div>
-        <div class="vm-cell vm-wide" style="background-image:url('galerie-bois.jpg')"></div>
-        <div class="vm-cell" style="background-image:url('galerie-panneau.jpg')"></div>
-      </div>
-      <div class="vedette-label"><span></span>Airbnb · Rouen</div>
+    <div class="project-card airbnb-wide reveal" style="grid-column:span 2;background-image:url('airbnb-bibliotheque.jpg')">
       <div class="project-info project-info--rich">
-        <div class="project-type">Aménagement complet · Airbnb</div>
+        <div class="project-type">Aménagement complet · Airbnb · Rouen</div>
         <div class="project-name">La bibliothèque secrète</div>
         <div class="project-detail">
           <div class="pd-block"><span class="pd-label">Le concept</span><p>Derrière les rayonnages, une chambre se cache. Une bibliothèque pivotante sur mesure dissimule l'accès à une chambre secrète — le secret du lieu, pensé pour l'expérience des hôtes.</p></div>
@@ -327,6 +305,17 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('galerie-escalier.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('galerie-salon.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('galerie-biblio.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('galerie-mur.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('airbnb-vue.jpg')"></div>
+    <div class="project-card airbnb-wide reveal" style="grid-column:span 2;background-image:url('galerie-vue.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('airbnb-chambre.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('galerie-tasseaux.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('airbnb-salon.jpg')"></div>
+    <div class="project-card airbnb-wide reveal" style="grid-column:span 2;background-image:url('galerie-bois.jpg')"></div>
+    <div class="project-card airbnb-photo reveal" style="background-image:url('galerie-panneau.jpg')"></div>
   </div>
 </section>
 
