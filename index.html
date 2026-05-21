@@ -74,6 +74,11 @@ section{padding:7rem 6rem}
 .pd-block p{font-size:13px;color:rgba(244,242,237,.82);line-height:1.7;margin:0}
 .project-type{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:.4rem}
 .project-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:white;margin-bottom:.2rem}
+.galerie-section{max-width:1200px;margin:0 auto;padding:0 2rem 6rem}
+.galerie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.galerie-cell{aspect-ratio:1/1;background-size:cover;background-position:center;overflow:hidden;transition:transform .7s cubic-bezier(.25,0,.25,1)}
+.galerie-cell.g-wide{grid-column:span 2;aspect-ratio:2/1}
+@media(hover:hover){.galerie-cell:hover{transform:scale(1.02)}}
 .compagnonnage{background:var(--mist)}
 .compag-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .compag-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.15;margin-bottom:2rem}
@@ -162,6 +167,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large,.project-vedette{grid-column:1!important}
   .project-vedette{min-height:85vw}
   .vedette-mosaic{grid-template-columns:1fr 1fr}
+  .galerie-grid{grid-template-columns:repeat(2,1fr)}.galerie-cell.g-wide{grid-column:auto;aspect-ratio:1/1}
   .phase-nav{grid-template-columns:repeat(2,1fr)}
   footer{flex-direction:column;gap:1rem;padding:1.5rem 2.5rem;text-align:center}
 }
@@ -324,6 +330,20 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
     </div>
   </div>
 </section>
+
+<!-- GALERIE -->
+<div class="galerie-section">
+  <div class="galerie-grid">
+    <div class="galerie-cell g-wide reveal" style="background-image:url('galerie-escalier.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-mur.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-bois.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-biblio.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-tasseaux.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-panneau.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-vue.jpg')"></div>
+    <div class="galerie-cell reveal" style="background-image:url('galerie-salon.jpg')"></div>
+  </div>
+</div>
 
 <!-- HISTOIRE / COMPAGNONNAGE -->
 <section class="compagnonnage" id="histoire">
