@@ -27,6 +27,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero-desc{font-size:15px;line-height:1.85;color:var(--muted);max-width:360px;margin-bottom:3rem}
 .hero-cta{display:inline-flex;align-items:center;gap:.8rem;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s,opacity .2s;align-self:flex-start}
 .hero-cta:hover{gap:1.4rem;opacity:.65}
+.hero-cta-secondary{display:inline-flex;align-items:center;gap:.8rem;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-decoration:none;border:.5px solid rgba(26,26,24,.25);padding:.55rem 1.2rem;transition:all .25s;align-self:flex-start;margin-top:.8rem}
+.hero-cta-secondary:hover{color:var(--ink);border-color:var(--ink);gap:1.3rem}
 .hero-right{position:relative;overflow:hidden;background:var(--mist);margin-left:-60px;z-index:1}
 .hero-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:75% 25%;gap:2px}
 .hero-mosaic div{background-size:cover;background-position:center;background-repeat:no-repeat}
@@ -193,6 +195,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
     <p class="hero-tagline">Étudier · Guider · Élaborer · Agencer</p>
     <p class="hero-desc">Chaque espace a une histoire à écrire. Nous la concevons avec vous, la fabriquons en atelier, et l'installons avec le soin d'un artisan qui signe son travail.</p>
     <a href="#realisations" class="hero-cta">Voir les réalisations →</a>
+    <a href="#contact" class="hero-cta-secondary">Parler de votre projet →</a>
   </div>
   <div class="hero-right">
     <div class="hero-mosaic">
