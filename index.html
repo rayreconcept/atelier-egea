@@ -49,9 +49,8 @@ section{padding:7rem 6rem}
 .realisations{background:var(--stone)}
 .real-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
 .real-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink)}
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent;aspect-ratio:3/4}
-.project-card[style*="1/-1"]{aspect-ratio:2/1}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .project-card.large{grid-column:span 1}
 .project-airbnb{grid-column:1/-1;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .airbnb-mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(160px,18vw,260px);gap:1.2rem}
@@ -65,7 +64,7 @@ section{padding:7rem 6rem}
 .cm-wide{grid-column:span 2}
 @media(hover:hover){.project-cheminee:hover .cm-cell{transform:scale(1.03)}}
 .project-cheminee.touch-active .cm-cell{transform:scale(1.03)}
-.project-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
+.project-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
   .project-card:hover .project-info{transform:translateY(0)}
@@ -176,7 +175,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   .approche,.demarche,.contact,.compag-grid,.apropos{grid-template-columns:1fr;gap:3rem}
   .apropos-schema{padding:3rem 2.5rem}
   .apropos-text{padding:3rem 2.5rem}.apropos-vis{padding:3rem 2.5rem}
-  .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large{grid-column:1!important;grid-row:auto!important;aspect-ratio:4/5}.project-card[style*="1/-1"]{aspect-ratio:4/3}
+  .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large{grid-column:1!important}
   .airbnb-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:35vw}.am-wide{grid-column:span 1}
   .cheminee-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:35vw}.cm-wide{grid-column:span 1}
   .phase-nav{grid-template-columns:repeat(2,1fr)}
@@ -283,7 +282,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal" style="grid-column:span 2;grid-row:span 2;aspect-ratio:auto">
+    <div class="project-card reveal" style="grid-column:span 2">
       <img class="project-img" src="mobilier-agencement-rail-sol-collaboration-architecte-rouen-paris-atelier-egea.jpg" alt="Mobilier agencement rail sol collaboration architecte sur mesure Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Sur mesure</div>
@@ -295,7 +294,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal" style="background:var(--ink)">
+    <div class="project-card reveal">
       <img class="project-img" src="booth-dj-demontable-sur-mesure-evenementiel-rouen-paris-atelier-egea.jpg" alt="Booth DJ démontable sur mesure événementiel haut de gamme Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Création sur mesure · Événementiel haut de gamme</div>
@@ -306,11 +305,6 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
           <div class="pd-block"><span class="pd-label">Résultat</span><p>Un booth à l'identité forte, conçu pour des événements haut de gamme. L'outil de travail d'un DJ qui ne veut pas faire comme tout le monde.</p></div>
         </div>
       </div>
-    </div>
-    <div class="reveal" style="background:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 2rem 2.2rem;aspect-ratio:3/4;overflow:hidden">
-      <span style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--warm);margin-bottom:1.2rem;display:flex;align-items:center;gap:.8rem"><span style="display:block;width:1.5rem;height:.5px;background:var(--warm)"></span>Atelier EGEA</span>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,2.2vw,1.9rem);font-weight:300;color:var(--stone);line-height:1.25;margin-bottom:1.4rem">De la prise de cotes<br><em style="color:var(--warm)">à la pose finale.</em></p>
-      <p style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,242,237,.45)">Rouen · Paris · Sur mesure</p>
     </div>
     <div class="project-card reveal" style="grid-column:1/-1">
       <img class="project-img" src="airbnb-bibliotheque-pivotante-porte-cachee-amenagement-rouen-atelier-egea.jpg" alt="Airbnb bibliothèque pivotante porte cachée aménagement complet Rouen — Atelier EGEA">
