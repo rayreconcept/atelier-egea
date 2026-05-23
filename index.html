@@ -50,7 +50,8 @@ section{padding:7rem 6rem}
 .real-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem}
 .real-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;color:var(--ink)}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.project-card{position:relative;overflow:hidden;background:var(--mist);cursor:pointer;-webkit-tap-highlight-color:transparent;aspect-ratio:3/4}
+.project-card[style*="1/-1"]{aspect-ratio:2/1}
 .project-card.large{grid-column:span 1}
 .project-airbnb{grid-column:1/-1;position:relative;overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .airbnb-mosaic{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:clamp(160px,18vw,260px);gap:1.2rem}
@@ -64,7 +65,7 @@ section{padding:7rem 6rem}
 .cm-wide{grid-column:span 2}
 @media(hover:hover){.project-cheminee:hover .cm-cell{transform:scale(1.03)}}
 .project-cheminee.touch-active .cm-cell{transform:scale(1.03)}
-.project-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
+.project-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,0,.25,1),filter .4s;filter:grayscale(12%)}
 @media(hover:hover){
   .project-card:hover .project-img{transform:scale(1.03);filter:grayscale(0%)}
   .project-card:hover .project-info{transform:translateY(0)}
@@ -175,7 +176,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   .approche,.demarche,.contact,.compag-grid,.apropos{grid-template-columns:1fr;gap:3rem}
   .apropos-schema{padding:3rem 2.5rem}
   .apropos-text{padding:3rem 2.5rem}.apropos-vis{padding:3rem 2.5rem}
-  .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large{grid-column:1!important;grid-row:auto!important}
+  .projects-grid{grid-template-columns:1fr}.project-card,.project-card.large{grid-column:1!important;grid-row:auto!important;aspect-ratio:4/5}.project-card[style*="1/-1"]{aspect-ratio:4/3}
   .airbnb-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:35vw}.am-wide{grid-column:span 1}
   .cheminee-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:35vw}.cm-wide{grid-column:span 1}
   .phase-nav{grid-template-columns:repeat(2,1fr)}
