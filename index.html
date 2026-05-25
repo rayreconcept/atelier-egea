@@ -22,7 +22,8 @@
 html{scroll-behavior:smooth}
 body{font-family:'Barlow',sans-serif;background:var(--stone);color:var(--text);font-weight:300;overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5rem;background:rgba(244,242,237,0.94);backdrop-filter:blur(10px);border-bottom:0.5px solid var(--line)}
-.nav-logo{font-family:'Barlow',sans-serif;font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+.nav-logo{font-family:'Barlow',sans-serif;font-weight:500;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);display:flex;align-items:center;gap:.6rem}
+.nav-logo img{width:26px;height:26px;object-fit:contain;display:block}
 .nav-links{display:flex;gap:2.5rem;list-style:none}
 .nav-links a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
@@ -197,7 +198,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
 <body>
 
 <nav style="font-family: Barlow">
-  <span class="nav-logo">Atelier EGEA</span>
+  <span class="nav-logo"><img src="hero-logo.png" alt="Atelier EGEA">Atelier EGEA</span>
   <ul class="nav-links">
     <li><a href="#approche">Approche</a></li>
     <li><a href="#realisations">Réalisations</a></li>
