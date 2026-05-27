@@ -662,6 +662,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
 <script>
 var _activeCard = null;
 var _touchY = 0;
+var _touchHandled = false;
 document.querySelectorAll('.project-card').forEach(function(card) {
   card.addEventListener('touchstart', function(e) {
     _touchY = e.touches[0].clientY;
@@ -669,9 +670,12 @@ document.querySelectorAll('.project-card').forEach(function(card) {
   card.addEventListener('touchend', function(e) {
     if (Math.abs(e.changedTouches[0].clientY - _touchY) > 12) return;
     e.stopPropagation();
+    _touchHandled = true;
+    setTimeout(function() { _touchHandled = false; }, 600);
     if (_activeCard === this) {
       this.classList.remove('touch-active');
       _activeCard = null;
+      openProject(this);
     } else {
       if (_activeCard) _activeCard.classList.remove('touch-active');
       this.classList.add('touch-active');
@@ -716,23 +720,28 @@ document.addEventListener('keydown', function(e) {
 var projModal = document.getElementById('projectModal');
 var _gallery = [], _galleryIdx = 0;
 
+function openProject(card) {
+  var img = card.querySelector('.project-img');
+  var type = card.querySelector('.project-type');
+  var name = card.querySelector('.project-name');
+  var blocks = card.querySelectorAll('.pd-block');
+  var galleryAttr = card.getAttribute('data-gallery');
+  _gallery = galleryAttr ? galleryAttr.split(',') : (img ? [img.getAttribute('src')] : []);
+  _galleryIdx = 0;
+  projModal.querySelector('.proj-modal-type').textContent = type ? type.textContent : '';
+  projModal.querySelector('.proj-modal-name').textContent = name ? name.textContent : '';
+  var blocksEl = projModal.querySelector('.proj-modal-blocks');
+  blocksEl.innerHTML = '';
+  blocks.forEach(function(b) { blocksEl.appendChild(b.cloneNode(true)); });
+  _updateGallery();
+  projModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
 document.querySelectorAll('.project-card').forEach(function(card) {
   card.addEventListener('click', function() {
-    var img = card.querySelector('.project-img');
-    var type = card.querySelector('.project-type');
-    var name = card.querySelector('.project-name');
-    var blocks = card.querySelectorAll('.pd-block');
-    var galleryAttr = card.getAttribute('data-gallery');
-    _gallery = galleryAttr ? galleryAttr.split(',') : (img ? [img.getAttribute('src')] : []);
-    _galleryIdx = 0;
-    projModal.querySelector('.proj-modal-type').textContent = type ? type.textContent : '';
-    projModal.querySelector('.proj-modal-name').textContent = name ? name.textContent : '';
-    var blocksEl = projModal.querySelector('.proj-modal-blocks');
-    blocksEl.innerHTML = '';
-    blocks.forEach(function(b) { blocksEl.appendChild(b.cloneNode(true)); });
-    _updateGallery();
-    projModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    if (_touchHandled) return;
+    openProject(card);
   });
 });
 
