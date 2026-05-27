@@ -638,6 +638,27 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   <span class="f-sub">Étudier · Guider · Élaborer · Agencer</span>
 </footer>
 
+<div id="projectModal" class="proj-modal">
+  <div class="proj-modal-inner">
+    <button class="proj-modal-close" onclick="closeProject()">&#215;</button>
+    <div class="proj-modal-img-wrap">
+      <img class="proj-modal-img" src="" alt="">
+      <div class="proj-modal-nav">
+        <button class="proj-modal-prev" onclick="galleryPrev()">&#8592;</button>
+        <span class="proj-modal-counter"></span>
+        <button class="proj-modal-next" onclick="galleryNext()">&#8594;</button>
+      </div>
+    </div>
+    <div class="proj-modal-content">
+      <div>
+        <div class="proj-modal-type"></div>
+        <div class="proj-modal-name"></div>
+      </div>
+      <div class="proj-modal-blocks"></div>
+    </div>
+  </div>
+</div>
+
 <script>
 var _activeCard = null;
 var _touchY = 0;
@@ -759,26 +780,5 @@ function handleSubmit(e) {
   btn.style.color = 'var(--warm)';
 }
 </script>
-
-<div id="projectModal" class="proj-modal">
-  <div class="proj-modal-inner">
-    <button class="proj-modal-close" onclick="closeProject()">&#215;</button>
-    <div class="proj-modal-img-wrap">
-      <img class="proj-modal-img" src="" alt="">
-      <div class="proj-modal-nav">
-        <button class="proj-modal-prev" onclick="galleryPrev()">&#8592;</button>
-        <span class="proj-modal-counter"></span>
-        <button class="proj-modal-next" onclick="galleryNext()">&#8594;</button>
-      </div>
-    </div>
-    <div class="proj-modal-content">
-      <div>
-        <div class="proj-modal-type"></div>
-        <div class="proj-modal-name"></div>
-      </div>
-      <div class="proj-modal-blocks"></div>
-    </div>
-  </div>
-</div>
 </body>
 </html>
