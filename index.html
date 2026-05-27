@@ -198,6 +198,25 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
   .phase-nav{grid-template-columns:repeat(2,1fr)}
   footer{flex-direction:column;gap:1rem;padding:1.5rem 2.5rem;text-align:center}
 }
+.proj-modal{position:fixed;inset:0;z-index:1500;background:rgba(16,16,14,.94);opacity:0;pointer-events:none;transition:opacity .32s;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.proj-modal.open{opacity:1;pointer-events:all}
+.proj-modal-inner{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:1040px;max-height:90vh;background:var(--ink);position:relative;overflow:hidden}
+.proj-modal-img-wrap{overflow:hidden}
+.proj-modal-img{width:100%;height:100%;object-fit:cover;display:block}
+.proj-modal-content{padding:2.8rem;overflow-y:auto;display:flex;flex-direction:column;gap:1.4rem;justify-content:center}
+.proj-modal-close{position:absolute;top:.9rem;right:1rem;background:transparent;border:none;color:rgba(244,242,237,.4);font-size:2rem;cursor:pointer;z-index:1;line-height:1;padding:.2rem .4rem;transition:color .2s;font-family:sans-serif}
+.proj-modal-close:hover{color:var(--stone)}
+.proj-modal-type{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--warm);margin-bottom:.5rem}
+.proj-modal-name{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:300;color:white;line-height:1.15}
+.proj-modal-blocks{display:flex;flex-direction:column;gap:1.1rem;margin-top:.4rem}
+.proj-modal-blocks .pd-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:.3rem;font-weight:500}
+.proj-modal-blocks .pd-block p{font-size:13px;color:rgba(244,242,237,.78);line-height:1.75;margin:0}
+@media(max-width:640px){
+  .proj-modal{padding:.4rem}
+  .proj-modal-inner{grid-template-columns:1fr;max-height:96vh}
+  .proj-modal-img-wrap{height:60vw;flex-shrink:0}
+  .proj-modal-content{padding:1.5rem 1.5rem 2rem}
+}
 </style>
 </head>
 <body>
@@ -661,8 +680,34 @@ function closeCharte() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeCharte();
+  if (e.key === 'Escape') { closeCharte(); closeProject(); }
 });
+
+var projModal = document.getElementById('projectModal');
+document.querySelectorAll('.project-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    var img = card.querySelector('.project-img');
+    var type = card.querySelector('.project-type');
+    var name = card.querySelector('.project-name');
+    var blocks = card.querySelectorAll('.pd-block');
+    projModal.querySelector('.proj-modal-img').src = img ? img.src : '';
+    projModal.querySelector('.proj-modal-img').alt = img ? img.alt : '';
+    projModal.querySelector('.proj-modal-type').textContent = type ? type.textContent : '';
+    projModal.querySelector('.proj-modal-name').textContent = name ? name.textContent : '';
+    var blocksEl = projModal.querySelector('.proj-modal-blocks');
+    blocksEl.innerHTML = '';
+    blocks.forEach(function(b) { blocksEl.appendChild(b.cloneNode(true)); });
+    projModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+projModal.addEventListener('click', function(e) {
+  if (e.target === projModal) closeProject();
+});
+function closeProject() {
+  projModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 function handleSubmit(e) {
   e.preventDefault();
@@ -680,5 +725,21 @@ function handleSubmit(e) {
   btn.style.color = 'var(--warm)';
 }
 </script>
+
+<div id="projectModal" class="proj-modal">
+  <div class="proj-modal-inner">
+    <button class="proj-modal-close" onclick="closeProject()">&#215;</button>
+    <div class="proj-modal-img-wrap">
+      <img class="proj-modal-img" src="" alt="">
+    </div>
+    <div class="proj-modal-content">
+      <div>
+        <div class="proj-modal-type"></div>
+        <div class="proj-modal-name"></div>
+      </div>
+      <div class="proj-modal-blocks"></div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
