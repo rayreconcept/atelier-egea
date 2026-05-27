@@ -211,6 +211,11 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
 .proj-modal-blocks{display:flex;flex-direction:column;gap:1.1rem;margin-top:.4rem}
 .proj-modal-blocks .pd-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);display:block;margin-bottom:.3rem;font-weight:500}
 .proj-modal-blocks .pd-block p{font-size:13px;color:rgba(244,242,237,.78);line-height:1.75;margin:0}
+.proj-modal-img-wrap{position:relative}
+.proj-modal-nav{position:absolute;bottom:1rem;left:0;right:0;display:none;align-items:center;justify-content:center;gap:1rem}
+.proj-modal-prev,.proj-modal-next{background:rgba(16,16,14,.65);border:.5px solid rgba(244,242,237,.25);color:rgba(244,242,237,.85);width:2.4rem;height:2.4rem;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.proj-modal-prev:hover,.proj-modal-next:hover{background:rgba(16,16,14,.95);color:var(--stone);border-color:rgba(244,242,237,.5)}
+.proj-modal-counter{font-size:11px;letter-spacing:.12em;color:rgba(244,242,237,.55);min-width:2.8rem;text-align:center}
 @media(max-width:640px){
   .proj-modal{padding:.4rem}
   .proj-modal-inner{grid-template-columns:1fr;max-height:96vh}
@@ -281,7 +286,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
     <span style="font-size:11px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase">Espaces personnels &amp; professionnels</span>
   </div>
   <div class="projects-grid">
-    <div class="project-card large reveal">
+    <div class="project-card large reveal" data-gallery="lightbox/mur-vegetal-1.jpg">
       <img class="project-img" src="mur-vegetal-claire-voie-chene-valchromat-open-space-rouen-paris-atelier-egea.jpg" alt="Mur végétal claire-voie chêne Valchromat open space Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Espace professionnel · Open space · Collaboration végétal</div>
@@ -293,7 +298,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/escalier-rangements-1.jpg,lightbox/escalier-rangements-2.jpg">
       <img class="project-img" src="escalier-quart-tournant-rangements-integres-sur-mesure-rouen-paris-atelier-egea.jpg" alt="Escalier quart tournant rangements intégrés sur mesure Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Espace personnel · Contrainte forte</div>
@@ -305,7 +310,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/bar-restaurant-1.jpg">
       <img class="project-img" src="amenagement-bar-restaurant-marbre-mosaique-rouen-paris-atelier-egea.jpg" alt="Aménagement bar restaurant marbre mosaïque sur mesure Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Aménagement commercial · Coordination multi-corps de métier</div>
@@ -317,7 +322,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/mobilier-agencement-1.jpg">
       <img class="project-img" src="mobilier-agencement-rail-sol-collaboration-architecte-rouen-paris-atelier-egea.jpg" alt="Mobilier agencement rail sol collaboration architecte sur mesure Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Sur mesure</div>
@@ -329,7 +334,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/booth-dj-1.jpg">
       <img class="project-img" src="booth-dj-demontable-sur-mesure-evenementiel-rouen-paris-atelier-egea.jpg" alt="Booth DJ démontable sur mesure événementiel haut de gamme Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Création sur mesure · Événementiel haut de gamme</div>
@@ -341,7 +346,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/airbnb-1.jpg">
       <img class="project-img" src="airbnb-bibliotheque-pivotante-porte-cachee-amenagement-rouen-atelier-egea.jpg" alt="Airbnb bibliothèque pivotante porte cachée aménagement complet Rouen — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Aménagement complet · Airbnb · Rouen</div>
@@ -353,7 +358,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/bureau-bibliotheque-1.jpg">
       <img class="project-img" src="bureau-bibliotheque-rail-sol-sur-mesure-rouen-paris-atelier-egea.jpg" alt="Bureau bibliothèque système rail sol sur mesure Rouen Paris — Atelier EGEA">
       <div class="project-info project-info--rich">
         <div class="project-type">Agencement résidentiel · Collaboration architecte</div>
@@ -365,7 +370,7 @@ footer{background:var(--stone);border-top:.5px solid var(--line);padding:1.8rem 
         </div>
       </div>
     </div>
-    <div class="project-card reveal">
+    <div class="project-card reveal" data-gallery="lightbox/bibliotheque-cheminee-1.jpg">
       <img class="project-img" src="bibliotheque-cheminee-chene-laque-vert-sauge-rouen-paris-atelier-egea.jpg" alt="Bibliothèque & Cheminée chêne vert sauge">
       <div class="project-info project-info--rich">
         <div class="project-type">Mobilier résidentiel</div>
@@ -681,26 +686,55 @@ function closeCharte() {
 }
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') { closeCharte(); closeProject(); }
+  if (projModal && projModal.classList.contains('open')) {
+    if (e.key === 'ArrowLeft') galleryPrev();
+    if (e.key === 'ArrowRight') galleryNext();
+  }
 });
 
 var projModal = document.getElementById('projectModal');
+var _gallery = [], _galleryIdx = 0;
+
 document.querySelectorAll('.project-card').forEach(function(card) {
   card.addEventListener('click', function() {
     var img = card.querySelector('.project-img');
     var type = card.querySelector('.project-type');
     var name = card.querySelector('.project-name');
     var blocks = card.querySelectorAll('.pd-block');
-    projModal.querySelector('.proj-modal-img').src = img ? img.src : '';
-    projModal.querySelector('.proj-modal-img').alt = img ? img.alt : '';
+    var galleryAttr = card.getAttribute('data-gallery');
+    _gallery = galleryAttr ? galleryAttr.split(',') : (img ? [img.getAttribute('src')] : []);
+    _galleryIdx = 0;
     projModal.querySelector('.proj-modal-type').textContent = type ? type.textContent : '';
     projModal.querySelector('.proj-modal-name').textContent = name ? name.textContent : '';
     var blocksEl = projModal.querySelector('.proj-modal-blocks');
     blocksEl.innerHTML = '';
     blocks.forEach(function(b) { blocksEl.appendChild(b.cloneNode(true)); });
+    _updateGallery();
     projModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   });
 });
+
+function _updateGallery() {
+  projModal.querySelector('.proj-modal-img').src = _gallery[_galleryIdx] || '';
+  var nav = projModal.querySelector('.proj-modal-nav');
+  if (_gallery.length > 1) {
+    nav.style.display = 'flex';
+    projModal.querySelector('.proj-modal-counter').textContent = (_galleryIdx + 1) + ' / ' + _gallery.length;
+  } else {
+    nav.style.display = 'none';
+  }
+}
+
+function galleryPrev() {
+  _galleryIdx = (_galleryIdx - 1 + _gallery.length) % _gallery.length;
+  _updateGallery();
+}
+function galleryNext() {
+  _galleryIdx = (_galleryIdx + 1) % _gallery.length;
+  _updateGallery();
+}
+
 projModal.addEventListener('click', function(e) {
   if (e.target === projModal) closeProject();
 });
@@ -731,6 +765,11 @@ function handleSubmit(e) {
     <button class="proj-modal-close" onclick="closeProject()">&#215;</button>
     <div class="proj-modal-img-wrap">
       <img class="proj-modal-img" src="" alt="">
+      <div class="proj-modal-nav">
+        <button class="proj-modal-prev" onclick="galleryPrev()">&#8592;</button>
+        <span class="proj-modal-counter"></span>
+        <button class="proj-modal-next" onclick="galleryNext()">&#8594;</button>
+      </div>
     </div>
     <div class="proj-modal-content">
       <div>
