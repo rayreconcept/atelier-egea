@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /propositions/
+
+Sitemap: https://atelier-egea.com/sitemap.xml
